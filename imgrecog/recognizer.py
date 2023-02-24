@@ -1,10 +1,9 @@
 import cv2
 import numpy as np
+import os
 
-def recognize():
-    img = cv2.imread('resources/originals/triangle.jpg')
-    mask = cv2.imread('resources/mask.jpg')
 
+def recognize(mask, img, number):
     # Convert the mask to grayscale
     gray_mask = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
 
@@ -38,11 +37,8 @@ def recognize():
     # Crop the original image to the dimensions of the template
     cropped_img = img[top_left[1]:top_left[1] + h, top_left[0]:top_left[0] + w]
 
-    # Print the dimensions and position of the bounding rectangle (for troubleshooting purposes)
-    print('Bounding rectangle dimensions:', x, y, w, h)
-
     # Save the cropped image
-    cv2.imwrite('resources/cropped/cropped_triangle.jpg', cropped_img)
+    cv2.imwrite('resources/cropped/triangle_cropped_' + str(number) + '.jpg', cropped_img)
 
     # Display the original image, binary mask, and cropped image (for troubleshooting purposes)
     cv2.imshow('Original image', img)
@@ -50,4 +46,3 @@ def recognize():
     cv2.imshow('Cropped image', cropped_img)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
