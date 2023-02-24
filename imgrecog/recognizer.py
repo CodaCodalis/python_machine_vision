@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import os
 
 
 def recognize(mask, img, number):
