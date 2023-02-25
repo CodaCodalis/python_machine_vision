@@ -8,8 +8,8 @@ def main():
     number = 0
     for file in sorted(glob.iglob('resources/originals/*')):
         img = cv2.imread(file)
-        mask = cv2.imread('resources/mask.jpg')
-        recognizer.recognize(mask, img, number)
+        mask = cv2.imread('resources/mask_edge.jpg')
+        recognizer.recognize_rotated3(mask, img, number)
         number = number + 1
 
 
